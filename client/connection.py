@@ -9,8 +9,8 @@ def send(data):
 
 while True:
   send(input())
-	data = server.recv(1024)
-	data = pickle.loads(data)
-	print(data)
+	#data = server.recv(1024)
+	#data = pickle.loads(data)
+	#print(data)
 
 server.close()
