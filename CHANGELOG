@@ -2,4 +2,10 @@ Changelog File
 
 2018-06-11
 
-Added this changelog file.
+Add:
+
+CHANGELOG
+client/client.py
+client/connection.py
+server/server.py
+server/connection.py
