@@ -1,2 +1,2 @@
 def parse(data):
-    pass
+    return "".join(data.sort())
