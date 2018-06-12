@@ -18,14 +18,13 @@ while True:
 	except select.error:
 		pass
 	else:
-		if __name__ == "__main__":
-			for clientInList in clientsList:
-				data = clientInList.recv(1024)
-				data = pickle.loads(data)
-				server.parse(data)
-			#data = "Welcome"
-			#data = pickle.dumps(data)
-			#clientInList.send(data)
+	
+		for clientInList in clientsList:
+			data = clientInList.recv(1024)
+			data = pickle.loads(data)
+			datatoreturn = server.parse(data)
+			datatoreturn = pickle.dumps(datatoreturn)
+			clientInList.send(datatoreturn)
 
 clientInList.close()
 server.close()
