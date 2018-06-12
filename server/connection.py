@@ -1,4 +1,4 @@
-import socket, select, pickle
+import socket, select, pickle, server
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(('', 4000))
@@ -21,7 +21,7 @@ while True:
 		for clientInList in clientsList:
 			data = clientInList.recv(1024)
 			data = pickle.loads(data)
-			print(data)
+			server.parse(data)
 			data = "Welcome"
 			data = pickle.dumps(data)
 			clientInList.send(data)
