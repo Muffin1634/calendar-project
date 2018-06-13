@@ -1,34 +1,29 @@
 import sqlite3
 
+conn = sqlite3.connect('calendar.db') # database file
+c = conn.cursor() # create cursor
 
-conn = sqlite3.connect('calender.db') #database file
-
-c = conn.cursor()#create cursor
-
-try: #creates a table called dates. However, if there is a problem, like if 'dates' already exists, it just moves on.
-	c.execute('''CREATE TABLE dates ( 
-
-			month integer,
-			day integer,
-			year integer,
-			name text
-
+c.execute('''CREATE TABLE IF NOT EXISTS dates (
+	month INTEGER,
+	day INTEGER,
+	year INTEGER,
+	name TEXT,
+	jobid INTEGER 
 	)''')
-	c.commit()
-else:
-	pass
-
+# the id is for identifying which job is being selected
+# have a manual insertion fix currently but need to automate id creation later
 c.commit()
 
 def assignment(arguments):
 	arguments = arguments.replace("", "\n")
 	data = []
-	for line in data: #splits the data and isolates them in list entries.
+	for line in data: # splits the data and isolates them in list entries.
 		data.append(line)  
-		month = data[1]
-		day = data[2]
-		year = data[3]
-		name = data[4]
-	sql_insert = str("INSERT INTO dates VALUES ("month", " day", " year", "name")")
+		month = data[0]
+		day = data[1]
+		year = data[2]
+		name = data[3]
+		jobid = data[4]
+	sql_insert = str("INSERT INTO dates VALUES (month, day, year, name, jobid)")
 	c.execute(sql_insert)
-	
+	c.commit()
